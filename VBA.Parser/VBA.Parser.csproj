@@ -7,6 +7,10 @@
         <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Antlr4.Runtime.Standard" Version="4.11.1" />
+    </ItemGroup>
+
     <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
       <Exec Command="powershell.exe -ExecutionPolicy Bypass -NoProfile -File Scripts/pre-build.ps1" />
     </Target>
