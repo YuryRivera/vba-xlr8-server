@@ -4,6 +4,11 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
     </PropertyGroup>
+
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+      <Exec Command="powershell.exe -ExecutionPolicy Bypass -NoProfile -File Scripts/pre-build.ps1" />
+    </Target>
 
 </Project>
