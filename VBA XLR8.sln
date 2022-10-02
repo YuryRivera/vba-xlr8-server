@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBA.Lang", "VBA.Lang\VBA.Lang.csproj", "{A2FCB092-21A4-41ED-830A-F14881C8FC62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBA.Compiler", "VBA.Compiler\VBA.Compiler.csproj", "{3257E992-25A7-40BE-9971-30E50DAEDDF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBA.Parser", "VBA.Parser\VBA.Parser.csproj", "{6EC0E052-45EA-4518-B71A-1C7AF1D9892C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2FCB092-21A4-41ED-830A-F14881C8FC62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2FCB092-21A4-41ED-830A-F14881C8FC62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2FCB092-21A4-41ED-830A-F14881C8FC62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2FCB092-21A4-41ED-830A-F14881C8FC62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3257E992-25A7-40BE-9971-30E50DAEDDF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3257E992-25A7-40BE-9971-30E50DAEDDF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3257E992-25A7-40BE-9971-30E50DAEDDF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3257E992-25A7-40BE-9971-30E50DAEDDF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EC0E052-45EA-4518-B71A-1C7AF1D9892C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EC0E052-45EA-4518-B71A-1C7AF1D9892C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EC0E052-45EA-4518-B71A-1C7AF1D9892C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EC0E052-45EA-4518-B71A-1C7AF1D9892C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
