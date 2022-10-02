@@ -4,6 +4,7 @@ try
     $libDir = ".\Lang\"
     $pack = "VBA.Parser.Foundation"
     $lexerFile = ".\Lang\VbaLexer.g4"
+    $parserFile = ".\Lang\Vba.g4"
 
     if (Test-Path $ourDir)
     {
@@ -18,6 +19,7 @@ try
     Remove-Item "$ourDir*" -Recurse -Force
     java -jar Scripts\antlr.jar -lib $libDir -Dlanguage=CSharp -encoding UTF8 -Xexact-output-dir -package $pack -o $libDir $lexerFile
     Move-Item "$libDir\VbaLexer.cs" -Destination $ourDir -Force
+    java -jar Scripts\antlr.jar -lib $libDir -Dlanguage=CSharp -encoding UTF8 -Xexact-output-dir -package $pack -o $ourDir -visitor $parserFile
 
 }
 catch

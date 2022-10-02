@@ -6,4 +6,5 @@ riderModule.iml
 .idea
 *.interp
 *.tokens
+gen
 VBA.Parser/Foundation

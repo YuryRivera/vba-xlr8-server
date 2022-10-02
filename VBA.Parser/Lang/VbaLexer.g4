@@ -1,5 +1,9 @@
 lexer grammar VbaLexer;
 
+options { 
+  caseInsensitive = true;
+}
+
 // keywords
 ACCESS: 'ACCESS';
 ADDRESSOF: 'ADDRESSOF';
@@ -200,6 +204,14 @@ POW : '^';
 RPAREN : ')';
 L_SQUARE_BRACKET : '[';
 R_SQUARE_BRACKET : ']';
+COMMA: ',';
+SEMMICOLON: ';';
+HASH: '#';
+EXCLAMATION: '!';
+DOLARSING: '$';
+PERSENT: '%';
+AT: '@';
+DOT: '.';
 
 
 // literals

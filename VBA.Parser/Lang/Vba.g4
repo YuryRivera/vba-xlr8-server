@@ -15,11 +15,10 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-grammar vba;
+parser grammar Vba;
 
 options { 
-  caseInsensitive = true;
-  tokenVocab=vbaLexer;
+  tokenVocab=VbaLexer;
 }
 
 startRule : module EOF;
