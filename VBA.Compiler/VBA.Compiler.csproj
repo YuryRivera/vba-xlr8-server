@@ -5,6 +5,11 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <OutDir>..\..\vba-xlr8\compiler</OutDir>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="EPPlus" Version="4.5.3.3" />
+    </ItemGroup>
 
 </Project>
