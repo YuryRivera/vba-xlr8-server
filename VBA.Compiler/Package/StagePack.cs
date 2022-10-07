@@ -27,7 +27,7 @@ public class StagePack
         string cwd = Directory.GetCurrentDirectory();
         string pathName = cwd.Split('\\')[^1];
         string tempPath = Path.Join(tempDir, StageName, pathName, "src");
-        string filePath = Path.Join(tempDir, StageName, pathName, $"{pathName}.xlsm");
+        string filePath = Path.Join(tempDir, StageName, pathName, $"{pathName}.xlsx");
         Console.WriteLine($"Compressing {filePath}");
         ZipFile.CreateFromDirectory(tempPath, filePath, CompressionLevel.NoCompression, false);
         return filePath;

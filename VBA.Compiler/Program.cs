@@ -8,6 +8,18 @@ namespace VBA.Compiler;
 
 public static class Program
 {
+    private static Process? _process;
+    
+    private static void Termination(object? sender,EventArgs eventArgs)
+    {
+        _process?.Kill(true);
+    }
+
+    static Program()
+    {
+        AppDomain.CurrentDomain.ProcessExit += Termination;
+    }
+    
     public static int Main(string[] args)
     {
         try
@@ -21,6 +33,7 @@ public static class Program
                 {
                     Console.WriteLine(constant);
                 }
+
                 foreach (var reference in vba.References)
                 {
                     Console.WriteLine($"{reference.Libid}-{reference.Name}");
@@ -49,8 +62,10 @@ public static class Program
                     ff.Flush();
                     ff.Close();
                 }
+
                 return 0;
             }
+
             bool hasConfig = File.Exists("vba.json");
             if (!hasConfig)
             {
@@ -69,27 +84,52 @@ public static class Program
             var package = new ExcelPackage(info);
             ExcelWorksheet? sheet = package.Workbook.Worksheets["Aurora"];
             sheet.Cells[7, 1].Value = $"current time {DateTime.Now:hh:mm:ss}";
-            package.Save();
+            InsertVba(package.Workbook);
+            string newName = Path.ChangeExtension(path, "xlsm");
+            var newInfo = new FileInfo(newName);
+            package.SaveAs(newInfo);
             var startInfo = new ProcessStartInfo(@"C:\Program Files\Microsoft Office\Office15\EXCEL.EXE")
             {
                 WindowStyle = ProcessWindowStyle.Normal,
-                Arguments = path,
+                Arguments = newInfo.FullName,
             };
-            Process proc = Process.Start(startInfo);
-            proc.WaitForExit();
-
-            // StreamReader stream = File.OpenText("Objects/Aurora.vba");
-            // string vbaSource = stream.ReadToEnd();
-            //
-            // package.Workbook.CreateVBAProject();
-            // var project = 
+            _process = Process.Start(startInfo);
+            _process.WaitForExit();
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
             Console.WriteLine(e);
         }
+        finally
+        {
+            _process?.Kill();
+        }
 
         return 0;
     }
+
+    private static void InsertVba(ExcelWorkbook workbook)
+    {
+        workbook.CreateVBAProject();
+        var project = workbook.VbaProject;
+        if (Directory.Exists("modules"))
+        {
+            foreach (string file in Directory.GetFiles("modules"))
+            {
+                Console.WriteLine($"Module path {file}");
+                var fileInfo = new FileInfo(file);
+                using var ss = fileInfo.OpenText();
+                string nameNotExt = fileInfo.Name.Split('.')[0];
+                Console.WriteLine($"adding module: {nameNotExt}");
+                if (nameNotExt == "Salesforce")
+                {
+                    Console.WriteLine("Removing duplicated salesforce module");
+                    project.Modules.Remove(project.Modules["Salesforce"]);
+                }
+                var module = project.Modules.AddModule(nameNotExt);
+                module.Code = ss.ReadToEnd();
+            }
+        }
+    } 
 }
