@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBA.Compiler", "VBA.Compile
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBA.Parser", "VBA.Parser\VBA.Parser.csproj", "{6EC0E052-45EA-4518-B71A-1C7AF1D9892C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBA.Common", "VBA.Common\VBA.Common.csproj", "{768B79F1-CA66-473A-B9D2-5D357C2A575C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBA.Common.Test", "VBA.Common.Test\VBA.Common.Test.csproj", "{35AAE0BC-7208-4AAC-9DE9-47F4891FBE5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{6EC0E052-45EA-4518-B71A-1C7AF1D9892C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EC0E052-45EA-4518-B71A-1C7AF1D9892C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EC0E052-45EA-4518-B71A-1C7AF1D9892C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{768B79F1-CA66-473A-B9D2-5D357C2A575C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{768B79F1-CA66-473A-B9D2-5D357C2A575C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{768B79F1-CA66-473A-B9D2-5D357C2A575C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{768B79F1-CA66-473A-B9D2-5D357C2A575C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35AAE0BC-7208-4AAC-9DE9-47F4891FBE5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35AAE0BC-7208-4AAC-9DE9-47F4891FBE5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35AAE0BC-7208-4AAC-9DE9-47F4891FBE5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35AAE0BC-7208-4AAC-9DE9-47F4891FBE5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

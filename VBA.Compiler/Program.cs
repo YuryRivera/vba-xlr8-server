@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Microsoft.Extensions.Hosting;
 using OfficeOpenXml;
 using OfficeOpenXml.VBA;
 using VBA.Compiler.Package;
@@ -12,7 +13,9 @@ public static class Program
     
     private static void Termination(object? sender,EventArgs eventArgs)
     {
+        Console.WriteLine("me mataron xd :,(");
         _process?.Kill(true);
+        _process?.Close();
     }
 
     static Program()
@@ -22,6 +25,12 @@ public static class Program
     
     public static int Main(string[] args)
     {
+        using IHost host = Host.CreateDefaultBuilder(args)
+            .UseConsoleLifetime()
+            .Build();
+        
+        host.Run();
+        return 0;
         try
         {
             if (args[0] == "e")
@@ -39,22 +48,22 @@ public static class Program
                     Console.WriteLine($"{reference.Libid}-{reference.Name}");
                 }
 
-                Directory.CreateDirectory("Vshit");
+                Directory.CreateDirectory("shit");
                 Directory.CreateDirectory("unknown");
                 foreach (var module in vba.Modules)
                 {
                     Console.WriteLine($"{module.Name}:");
                     foreach (var attribute in module.Attributes)
                     {
-                        Console.Write($"{attribute.Name}={attribute.Value}");
+                       // Console.Write($"{attribute.Name}={attribute.Value}");
                     }
 
                     string folder = module.Type switch
                     {
-                        eModuleType.Document => "Vobjects",
-                        eModuleType.Module => "Vmodules",
-                        eModuleType.Class => "Vclasses",
-                        eModuleType.Designer => "Vshit",
+                        eModuleType.Document => "objects",
+                        eModuleType.Module => "modules",
+                        eModuleType.Class => "classes",
+                        eModuleType.Designer => "shit",
                         _ => "unknown"
                     };
                     using var ff = File.CreateText(Path.Join(folder, $"{module.Name}.vba"));
@@ -94,7 +103,7 @@ public static class Program
                 Arguments = newInfo.FullName,
             };
             _process = Process.Start(startInfo);
-            _process.WaitForExit();
+            _process.WaitForExit(5000);
         }
         catch (Exception e)
         {

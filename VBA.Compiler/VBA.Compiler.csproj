@@ -9,7 +9,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="CommandLineParser" Version="2.9.1" />
       <PackageReference Include="EPPlus" Version="4.5.3.3" />
+      <PackageReference Include="FluentValidation" Version="11.2.2" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
     </ItemGroup>
 
 </Project>
